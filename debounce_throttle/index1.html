@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+            #search{
+                padding: 14px 20px;
+                font-size: 20px;
+                font-weight: bold;
+                top:20%;
+                left: 40%;
+                position: absolute;
+            }
+            
+    </style>
+</head>
+<body>
+    <input type="text" id="search"/>
+    <br/>
+    <button type="button" id="buttonClick">Click me</button>
+</body>
+<script>
+    const serachInput = document.getElementById('search');
+    const button = document.getElementById('buttonClick');
+
+
+    function debounce(func,delay){
+        let timeout;
+        return function(...args){
+            clearTimeout(timeout)
+            timeout= setTimeout(() => {
+                func(...args)
+            }, delay);
+        }
+    }
+
+    const myFunction = function(e){
+        const query = e.target.value;
+        console.log(`Query is ${query}`);
+        // fetch(`https://example.com?query=${query}`)
+        // .then((response)=>response.json)
+        // .then((data)=>{
+        //     console.log(data)
+        // })
+    }
+    function throttle(func,delay){
+        // let shouldCall = true;
+        // return function(...args){
+        //     if(!shouldCall) return;
+        //     func(...args);
+        //     shouldCall = false;
+        //     setTimeout(() => {
+        //     shouldCall = true;
+        // }, delay);
+        // }
+        let lastCall = 0;
+        return function(...args){
+            const now = new Date().getTime();
+            if((now-lastCall) < delay) return;
+            lastCall = now
+            func(...args)
+        }
+    }
+
+    const buttonClick = ()=>{
+        console.log('button clicked')
+    }
+
+
+    button.addEventListener("click",throttle(buttonClick,1000))
+    // button.addEventListener("click",buttonClick)
+    serachInput.addEventListener("input",debounce(myFunction,500))
+</script>
+</html>
+
+
+<!-- they prevent the unncessary function calls -->

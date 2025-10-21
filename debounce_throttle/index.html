@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      font-family: "Lexend Deca Medium";
+    }
+
+    body {
+      height: 200vh;
+    }
+
+    section {
+      position: fixed;
+    }
+
+    p {
+      font-size: 3rem;
+    }
+  </style>
+  <body onscroll="showCount()">
+    <section>
+      <p class="n_count">Normal Count</p>
+      <p class="t_count">Throttle Count</p>
+      <p class="d_count">Debounce Count</p>
+    </section>
+    <script>
+      const normal_div = document.querySelector(".n_count");
+      const throttle_div = document.querySelector(".t_count");
+      const debounce_div = document.querySelector(".d_count");
+      let normal_count = 0;
+      let throttle_count = 0;
+      let debounce_count = 0;
+      let isScrolling = true;
+
+      const normalCount = () => {
+        normal_count++;
+        normal_div.innerHTML = `Normal Count: ${normal_count}`;
+      };
+      const throttleCount = () => {
+        if(isScrolling){
+            throttle_count++;
+            throttle_div.innerHTML = `Throttle Count: ${throttle_count}`;
+            isScrolling = false
+            setTimeout(() => {
+                isScrolling = true
+            }, 1000);
+        }
+      };
+      let interval;
+      const debounceCount = ()=>{
+        clearTimeout(interval)
+        interval = setTimeout(() => {
+            debounce_count++;
+            debounce_div.innerHTML = `Debounce Count: ${debounce_count}`;
+        }, 1000);
+      }
+
+      const showCount = () => {
+        normalCount();
+        throttleCount();
+        debounceCount();
+      };
+    </script>
+  </body>
+</html>
