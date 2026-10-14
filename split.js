@@ -13,3 +13,12 @@ console.log(`array 2: length: ${arr2.length} AND last= ${arr2.slice(-1)}`);
 
 // In JavaScript, the split method is used on strings, not directly on number values. 
 // If you want to split a number, you first need to convert it to a string.
+
+
+// Split the string comma & semicolon separated values
+var str = "apple,banana;cherry,dates;figs";
+var result = str.split(/[,;]/);     // Using regex to split by comma or semicolon
+console.log(result);  // [ 'apple', 'banana', 'cherry', 'dates', 'figs' ]
+
+
+

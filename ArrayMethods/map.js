@@ -76,6 +76,12 @@ const addObject = users1.filter(user=>user.active).map(user=>{
 })
 
 
+const usersNew = [['Alice',25], ['Bob',30], ['Charlie',35]];
+const userObjects = usersNew.map(([name,age])=>{
+    return {name,age}
+})
+console.log(userObjects)
+
 
 
 

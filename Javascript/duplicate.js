@@ -11,7 +11,7 @@ return unique;
 }
 console.log(removeDuplicates(arr));
 
-// console.log([...new Set(arr)])
+console.log([...new Set(arr)]);
 function removeDuplicates(arr) {
     let unique = [];
     arr.forEach(element => {
@@ -22,6 +22,11 @@ function removeDuplicates(arr) {
     return unique;
 }
 console.log(removeDuplicates(arr));
+
+let newArr = [1, 2, 3, 1, 5, 6, 5, 6];
+let uniqueArr = [];
+uniqueArr = newArr.filter((item,index)=>item!=newArr.indexOf(item));
+console.log(uniqueArr);
 
 /*let arr = [NaN];
 

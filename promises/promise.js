@@ -7,7 +7,8 @@
 // Promise - state | result
 // A promise is a 'PROMISE OF CODE EXECUTION' 
 /*
-Initially state will be pending then it change to either fulfilled(resolve) or rejected(reject). Promise give the suruty to execute the function because it will give the result.
+Initially state will be pending then it change to either fulfilled(resolve) or rejected(reject). 
+Promise give the suruty to execute the function because it will give the result.
 resolve(value)--> If the job is finished successfully.
 reject(error)--> If the job is fails.
 */

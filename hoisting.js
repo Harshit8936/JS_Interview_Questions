@@ -86,3 +86,32 @@ However, they are initialized and placed in a Temporal dead zone--> A phase, whe
 
 
 
+/* JavaScript hoists function declarations first, then var declarations (but not their values).
+
+var js = 1;
+function js(){
+    console.log("OK")
+}
+js()
+
+
+function js() {
+    console.log("OK");
+}
+
+var js; // this overrides the function name but value is undefined
+
+js = 1; // now js is number 1
+
+js();   // ❌ TypeError: js is not a function
+
+
+if we declare via let so let does NOT allow redeclaration
+
+
+SyntaxError: Identifier 'js' has already been declared
+
+
+
+
+*/
